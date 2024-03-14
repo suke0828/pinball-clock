@@ -35,8 +35,9 @@ class Pin {
 
     push();
     translate(pos.x, pos.y); // 移動する座標を追跡する
-    fill(0, 255, 0);
-    stroke(255);
+    fill(100, 100, 100, 200);
+    stroke(200);
+    strokeWeight(2);
     ellipse(0, 0, this.r * 2);
     pop();
   }
