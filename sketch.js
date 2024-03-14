@@ -17,7 +17,6 @@ function setup() {
 
   engine = Engine.create(); // 世界のシミュレーションの更新を管理するコントローラを作成
   world = engine.world; // このエンジンでシミュレートされる Matter.Composite インスタンス
-  engine.gravity.y = 2; // 重力の設定
 
   // 初期配置するparticleの作成
   createParticle();
