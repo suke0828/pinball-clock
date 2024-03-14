@@ -13,8 +13,10 @@ class Boundary {
 
     push();
     translate(pos.x, pos.y); // 移動する座標を追跡する
-    fill(255);
+    rectMode(CENTER); // 図形の中心のx座標とy座標を使用する
+    fill(0, 255, 0, 100);
     stroke(255);
+    strokeWeight(2);
     rect(0, 0, this.w, this.h);
     pop();
   }
