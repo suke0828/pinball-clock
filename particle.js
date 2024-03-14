@@ -5,6 +5,8 @@ class Particle {
       friction: 0.2, // 摩擦力。 0 ~ 1の範囲
       density: 1, // 密度
     };
+
+    x += random(-4, 4); // xの位置を左右ランダムに変化させる
     this.body = Bodies.circle(x, y, r, options); // 円の物質を作成
     this.r = r; // 半径を追跡するためのプロパティ
 
