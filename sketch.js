@@ -4,6 +4,7 @@ const Engine = Matter.Engine,
 
 const ROWS = 11;
 const COLS = 9;
+const TIME_STEP = 1000 / 60; // 毎秒60フレーム
 
 let world;
 let engine;
@@ -40,7 +41,7 @@ function draw() {
   pin.map((row) => row.map((col) => col.show()));
 
   // シミュレーションをミリ秒単位で進める(更新したいものを引数に渡す)
-  Engine.update(engine);
+  Engine.update(engine, TIME_STEP);
 }
 
 function createBoundary() {
