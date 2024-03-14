@@ -5,7 +5,7 @@ class Pin {
     this.cols = colIndex;
     let x = this.calculatePositionX();
     let y = this.calculatePositionY();
-    let options = { restitution: 1, friction: 0.9, isStatic: true }; // 静的なbody。trueの場合は位置や角度を変えることができず、完全に固定される(Matter.Body)
+    let options = { restitution: 0.1, friction: 0.2, isStatic: true }; // 静的なbody。trueの場合は位置や角度を変えることができず、完全に固定される(Matter.Body)
 
     this.body = Bodies.circle(x, y, r, options); // 円の物質を作成
 
