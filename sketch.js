@@ -68,12 +68,13 @@ function createBoundary() {
 }
 
 function createPin() {
+  let size = 4;
   // rows[[cols],[cols]…]の2次元配列を作成する
   pin = Array(ROWS)
     .fill(0)
     .map(() => Array(COLS).fill(0))
     .map((row, rowIndex) =>
-      row.map((_, colIndex) => new Pin(4, rowIndex, colIndex))
+      row.map((_, colIndex) => new Pin(size, rowIndex, colIndex))
     );
 }
 
@@ -84,6 +85,7 @@ function generateRegularIntervals() {
 }
 
 function createParticle() {
-  let particle = new Particle(width / 2, 0, 8);
+  let size = 16;
+  let particle = new Particle(width / 2, 0, size);
   particles.push(particle);
 }
