@@ -1,9 +1,9 @@
 class Boundary {
   constructor(x, y, w, h) {
     let options = { isStatic: true };
-    this.body = Bodies.rectangle(x, y, w, h, options); // 円の物質を作成
     this.w = w;
     this.h = h;
+    this.body = Bodies.rectangle(x, y, this.w, this.h, options); // 円の物質を作成
 
     Composite.add(world, this.body); // 全ての世界にbodyを反映させる
   }
@@ -13,8 +13,10 @@ class Boundary {
 
     push();
     translate(pos.x, pos.y); // 移動する座標を追跡する
-    fill(255);
+    rectMode(CENTER); // 図形の中心のx座標とy座標を使用する
+    fill(0, 255, 0, 100);
     stroke(255);
+    strokeWeight(2);
     rect(0, 0, this.w, this.h);
     pop();
   }
