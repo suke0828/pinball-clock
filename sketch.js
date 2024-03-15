@@ -12,6 +12,7 @@ let particles = [];
 let pin = [];
 let bounds = [];
 let buckets = [];
+let clock;
 
 function setup() {
   createCanvas(600, 700);
@@ -29,6 +30,10 @@ function setup() {
 function draw() {
   background(0);
 
+  // 時計の表示
+  getTime();
+  clock.show();
+
   // 一定時間ごとにparticleを生成する
   generateRegularIntervals();
 
@@ -45,6 +50,14 @@ function draw() {
 
   // シミュレーションをミリ秒単位で進める(更新したいものを引数に渡す)
   Engine.update(engine, TIME_STEP);
+}
+
+function getTime() {
+  let sc = second();
+  let mn = minute();
+  let hr = hour();
+
+  clock = new Clock(sc, mn, hr);
 }
 
 function createBuckets() {
