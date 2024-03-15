@@ -63,8 +63,14 @@ function createBuckets() {
 
 function createBoundary() {
   // rectangleは図形の中心のx座標とy座標を使用する
-  let b = new Boundary(width / 2, height + 50, width, 100);
-  bounds.push(b);
+  let bottomWall = new Boundary(width / 2, height + 50, width, 100);
+  bounds.push(bottomWall);
+
+  let leftWall = new Boundary(-50, height / 2, 100, height);
+  bounds.push(leftWall);
+
+  let rightWall = new Boundary(width + 50, height / 2, 100, height);
+  bounds.push(rightWall);
 }
 
 function createPin() {
