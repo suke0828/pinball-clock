@@ -15,7 +15,7 @@ class Particle {
   }
 
   removeParticle(i) {
-    if (this.isOffScreen()) {
+    if (this.isOffScreen() || second() == 0) {
       Composite.remove(world, this.body); // 物理の世界から削除する
       particles.splice(i, 1); // 配列から削除する
       i--; // 配列から削除されたらそれに合わせてindexも減らす
