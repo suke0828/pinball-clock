@@ -98,9 +98,15 @@ function createPin() {
 }
 
 function generateRegularIntervals() {
-  if (frameCount % 60 == 0) {
-    createParticle();
+  const SECOND = 60;
+
+  Array(SECOND)
+    .fill(0)
+    .map((_, i) => {
+      if (second() === i && frameCount % 60 == 0) {
+        return setTimeout(createParticle());
   }
+    });
 }
 
 function createParticle() {
