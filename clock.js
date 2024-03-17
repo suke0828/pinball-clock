@@ -15,8 +15,8 @@ class Clock {
       let x = row * cellSize;
       let y = height / 3;
 
-      fill(238, 232, 32, 200);
-      stroke(255);
+      fill(238, 232, 32, 100);
+      stroke(238, 232, 32, 100);
       strokeWeight(4);
       textAlign(CENTER);
       textSize(80);
