@@ -111,6 +111,6 @@ function generateRegularIntervals() {
 
 function createParticle() {
   let size = 16;
-  let particle = new Particle(width / 2, 0, size);
+  let particle = new Particle(width / 2, 0, size, second());
   particles.push(particle);
 }
