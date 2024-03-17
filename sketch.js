@@ -20,8 +20,6 @@ function setup() {
   engine = Engine.create(); // 世界のシミュレーションの更新を管理するコントローラを作成
   world = engine.world; // このエンジンでシミュレートされる Matter.Composite インスタンス
 
-  // 初期配置するparticleの作成
-  createParticle();
   createPin();
   createBoundary();
   createBuckets();
@@ -105,7 +103,7 @@ function generateRegularIntervals() {
     .map((_, i) => {
       if (second() === i && frameCount % 60 == 0) {
         return setTimeout(createParticle());
-  }
+      }
     });
 }
 
