@@ -38,7 +38,7 @@ function draw() {
   // particlesの描画
   particles.map((item, i) => {
     item.show();
-    item.removeParticle(i);
+    item.removeParticle(particles, i);
   });
 
   // ピンの描画
