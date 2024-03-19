@@ -33,7 +33,9 @@ function draw() {
   clock.show();
 
   // 一定時間ごとにparticleを生成する
-  generateRegularIntervals();
+  generateBalls(60, 'second');
+  generateBalls(minute(), 'minute');
+  generateBalls(hour(), 'hour');
 
   // particlesの描画
   particles.map((item, i) => {
@@ -95,20 +97,48 @@ function createPin() {
     );
 }
 
-function generateRegularIntervals() {
-  const SECOND = 60;
-
-  Array(SECOND)
+function generateBalls(clock, label) {
+  Array(clock)
     .fill(0)
     .map((_, i) => {
+      let number = i + 1;
       if (second() === i && frameCount % 60 == 0) {
-        return setTimeout(createParticle());
+        return createParticle(number, label);
       }
     });
 }
 
-function createParticle() {
-  let size = 16;
-  let particle = new Particle(width / 2, 0, size, second());
-  particles.push(particle);
+function createParticle(time, label) {
+  const widthtMap = {
+    second: random(width / 1.5, width),
+    minute: random(width / 3, width / 1.5),
+    hour: random(0, width / 3),
+  };
+  const heightMap = {
+    second: 0,
+    minute: -22,
+    hour: -22,
+  };
+
+  const sizeMap = {
+    second: 14,
+    minute: 18,
+    hour: 22,
+  };
+
+  const flagMap = {
+    second: 'isSecond',
+    minute: 'isMinute',
+    hour: 'isHour',
+  };
+
+  if (label in sizeMap) {
+    let x = widthtMap[label]; // 各particleの生成する横の位置を取得
+    let y = heightMap[label]; // 各particleの生成する高さを取得
+    let size = sizeMap[label]; // 各particleのサイズを取得
+    let particle = new Particle(x, y, size, time);
+
+    particle[flagMap[label]] = true; // 秒、分、時のそれぞれのテキストの生成フラグ
+    particles.push(particle);
+  }
 }

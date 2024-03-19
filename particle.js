@@ -1,5 +1,5 @@
 class Particle {
-  constructor(x, y, r, sc) {
+  constructor(x, y, r, time) {
     let options = {
       restitution: 1, // 弾性(跳ね返り)。0 ~ 1の範囲
       friction: 0.2, // 摩擦力。 0 ~ 1の範囲
@@ -9,7 +9,10 @@ class Particle {
     x += random(-4, 4); // xの位置を左右ランダムに変化させる
     this.body = Bodies.circle(x, y, r, options); // 円の物質を作成
     this.r = r; // 半径を追跡するためのプロパティ
-    this.sc = sc;
+    this.time = time;
+    this.isSecond = false;
+    this.isMinute = false;
+    this.isHour = false;
 
     Composite.add(world, this.body); // 全ての世界にbodyを反映させる
   }
@@ -35,18 +38,36 @@ class Particle {
 
   show() {
     let pos = this.body.position; // 現在地を取得する
+    let yellow = [238, 232, 32, 100];
+    let green = [0, 255, 0, 100];
+    let red = [255, 0, 0, 100];
 
     push();
     translate(pos.x, pos.y); // 移動する座標を追跡する
-    fill(238, 232, 32, 100);
+
+    if (this.isSecond) {
+      this.particleStyle(yellow);
+    }
+    if (this.isMinute) {
+      this.particleStyle(green);
+    }
+    if (this.isHour) {
+      this.particleStyle(red);
+    }
+    pop();
+  }
+
+  particleStyle(color) {
+    // particleの形状
+    fill(color);
     noStroke();
     ellipse(0, 0, this.r * 2);
 
+    // テキストスタイル
     fill(255);
     stroke(255);
     strokeWeight(2);
     textSize(this.r + this.r / 4);
-    text(this.sc, 0, 0 + this.r / 2);
-    pop();
+    text(this.time, 0, 0 + this.r / 2);
   }
 }
