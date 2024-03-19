@@ -8,6 +8,18 @@ class Clock {
   show() {
     const clockDisplay = [this.hour, ':', this.minute, ':', this.second];
     const clockRows = clockDisplay.length;
+    const SECOND_COLOR = [238, 232, 32];
+    const MINUTE_COLOR = [0, 255, 0, 200];
+    const HOUR_COLOR = [255, 0, 0];
+    const COLON_COLOR = [0, 0, 255];
+
+    // clockDisplayの配列のindexによってカラーを変更する
+    const clockColor = {
+      0: HOUR_COLOR,
+      2: MINUTE_COLOR,
+      4: SECOND_COLOR,
+      colon: COLON_COLOR,
+    };
 
     clockDisplay.map((clock, index) => {
       let cellSize = width / clockRows;
@@ -15,8 +27,10 @@ class Clock {
       let x = row * cellSize;
       let y = height / 3;
 
-      fill(238, 232, 32, 100);
-      stroke(238, 232, 32, 100);
+      const color = clockColor[index] || clockColor.colon;
+
+      fill(color);
+      stroke(color);
       strokeWeight(4);
       textAlign(CENTER);
       textSize(80);
