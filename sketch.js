@@ -40,6 +40,7 @@ function draw() {
   // particlesの描画
   particles.map((item, i) => {
     item.show();
+    item.clearParticle();
     item.removeParticle(particles, i);
   });
 

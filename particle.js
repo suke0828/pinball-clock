@@ -13,12 +13,22 @@ class Particle {
     this.isSecond = false;
     this.isMinute = false;
     this.isHour = false;
+    this.body.collisionFilter.group = 1; // partcile同士の当たり判定。正の値なら衝突し、負の値なら衝突しない
+    this.body.collisionFilter.category = 0x002; // 他の物質との衝突判定のためのカテゴリーを設定する
+    this.body.collisionFilter.mask = 0x001; // maskの値が他の物質に設定されているcategoryの値を含んでいると衝突し、違うと衝突しない
 
     Composite.add(world, this.body); // 全ての世界にbodyを反映させる
   }
 
+  clearParticle() {
+    // 1分経ったら当たり判定を無くして画面外にdropさせる
+    if (second() == 59) {
+      this.body.collisionFilter.mask = 0x000;
+    }
+  }
+
   removeParticle(particle, i) {
-    if (this.isOffScreen() || second() == 59) {
+    if (this.isOffScreen()) {
       Composite.remove(world, this.body); // 物理の世界から削除する
       particle.splice(i, 1); // 配列から削除する
       i--; // 配列から削除されたらそれに合わせてindexも減らす

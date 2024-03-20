@@ -4,6 +4,8 @@ class Boundary {
     this.w = w;
     this.h = h;
     this.body = Bodies.rectangle(x, y, this.w, this.h, options); // 円の物質を作成
+    this.body.collisionFilter.category = 0x001; // 衝突判定のためのカテゴリーを設定する
+    this.body.collisionFilter.mask = 0x002; // maskの値が他のcategoryの値を含んでいると衝突し、違うと衝突しない
 
     Composite.add(world, this.body); // 全ての世界にbodyを反映させる
   }
