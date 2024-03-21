@@ -2,7 +2,7 @@ const Engine = Matter.Engine,
   Bodies = Matter.Bodies,
   Composite = Matter.Composite;
 
-const ROWS = 11;
+const ROWS = 10;
 const COLS = 9;
 const TIME_STEP = 1000 / 60; // 毎秒60フレーム
 
@@ -80,10 +80,10 @@ function createBoundary() {
   let bottomWall = new Boundary(width / 2, height + 50, width, 100);
   bounds.push(bottomWall);
 
-  let leftWall = new Boundary(-50, height / 2, 100, height);
+  let leftWall = new Boundary(-65, height / 2, 100, height);
   bounds.push(leftWall);
 
-  let rightWall = new Boundary(width + 50, height / 2, 100, height);
+  let rightWall = new Boundary(width + 65, height / 2, 100, height);
   bounds.push(rightWall);
 }
 

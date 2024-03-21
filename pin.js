@@ -15,7 +15,8 @@ class Pin {
   }
 
   calculatePositionX() {
-    let spacing = width / ROWS; // 隙間を与える
+    let fixPosition = 1;
+    let spacing = width / (ROWS - fixPosition); // 隙間を与える
     let x = this.rows * spacing;
 
     // 偶数行の場合はpinの位置を右にずらす
@@ -27,7 +28,7 @@ class Pin {
   }
 
   calculatePositionY() {
-    let spacing = width / ROWS;
+    let spacing = height / (COLS * 1.5);
 
     return spacing + this.cols * spacing;
   }
